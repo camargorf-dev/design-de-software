@@ -1,0 +1,33 @@
+# ADR-0002: Definição do Escopo Inicial do App "Fila da Cantina"
+* **Status:** Proposto
+* **Data:** 2026-08-04
+---
+## 1. Mapa de Contexto Simples
+### Pessoas Envolvidas (Atores)
+* **Aluno (Usuário Principal):** Desiste de almoçar pelo tempo perdido na fila e busca agilidade.
+* **Equipe da Cantina (1 Caixa, 2 Cozinheiros):** Operação enxuta que não pode assumir novas burocracias.
+* **Coordenação do Campus:** Patrocinadora do projeto que precisa de um teste rápido e de baixo custo.
+### O que já existe hoje (Ambiente/Restrições)
+* **Cantina Física:** Local onde a comida é feita e distribuída.
+* **Fluxo de Pagamento Atual:** O caixa físico centraliza o recebimento de valores (dinheiro/cartão).
+* **Cardápio Fixo:** Produção focada exclusivamente no "prato do dia".
+---
+## 2. Decisões da Equipe e Justificativas (Princípios de Hooker)
+### Decisão 1: O aplicativo focará exclusivamente no agendamento do horário de retirada
+* **O que foi decidido:** O app servirá apenas para o aluno reservar o prato do dia e marcar o horário exato em que vai buscá-lo. A cantina criará uma área sinalizada de "Retirada Rápida".
+* **Justificativa (Princípio 1 de Hooker - A Razão de Tudo Existir):** A razão de ser do aplicativo é eliminar o tempo de espera do aluno na fila. Garantir apenas a comida não resolve o problema se o aluno continuar esperando. O foco no agendamento ataca diretamente a dor principal.
+### Decisão 2: O pagamento continuará sendo feito presencialmente na cantina
+* **O que foi decidido:** O aplicativo não terá carteira digital, gateway de pagamento ou PIX integrado nesta primeira versão. O aluno faz a reserva pelo app e paga no caixa físico na hora de retirar.
+* **Justificativa (Princípio 2 de Hooker - Mantenha Isso Simples / K.I.S.S.):** Como a coordenação não definiu o modelo de negócios e o caixa opera sozinho, incluir pagamentos no app geraria complexidade técnica e operacional desnecessária para um teste inicial de validação.
+### Decisão 3: Tolerância de 15 minutos para faltas sem aplicação de multas ou taxas
+* **O que foi decidido:** Se o aluno não aparecer para retirar o prato em até 15 minutos após o horário agendado, a reserva é cancelada automaticamente pelo sistema e a refeição é liberada para venda na fila comum.
+* **Justificativa (Princípio 2 de Hooker - Mantenha Isso Simples / K.I.S.S.):** Criar mecanismos de cobrança de taxas por no-show ou bloqueios de conta exige regras complexas de TI e de negócio que atrasariam o lançamento. A liberação do prato resolve o desperdício de forma simples e rápida.
+---
+## 3. Consequências Esperadas
+* **Positivas:**
+  * Desenvolvimento extremamente rápido e focado em um MVP (Mínimo Produto Viável).
+  * Sem custo financeiro com taxas de intermediadores de pagamento.
+  * Zero impacto ou treinamento complexo para os dois cozinheiros e o caixa.
+* **Negativas:**
+  * Risco de alguns alunos reservarem e não buscarem (atenuado pela regra dos 15 minutos).
+  * O processo ainda exige interação com o caixa físico para pagamento, não eliminando totalmente o contato humano.
